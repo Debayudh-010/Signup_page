@@ -1,6 +1,7 @@
 const express = require ("express");
 const https = require ("https");
 const app= express();
+require("dotenv").config();
 
 app.use(express.static("public"));
 app.use(express.urlencoded({extended: true}))
@@ -32,13 +33,15 @@ app.post("/", (req,res)=>{
     //to sub/unsub the syntax for POST: {endpoint}/lists/{list_id}
     //endpoint: https://usX.api.mailchimp.com/
     const url="https://us13.api.mailchimp.com/3.0/lists/6f6ba8f8fd";
-    
+    const api_key= process.env.API_KEY;
     const options={
         method: "POST",
-        auth: "deba:4af8f95506ee0ee1ee4607c56f8bb6c6-us13"
+        auth: "deba:"+api_key
     }
 
     const request=https.request(url, options, (response)=>{
+        
+        console.log(options);
         if(response.statusCode!=200)
             res.sendFile(__dirname +"/failure.html")
         else{
