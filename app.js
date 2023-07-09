@@ -71,8 +71,3 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
-
-//API key
-//4af8f95506ee0ee1ee4607c56f8bb6c6-us13
-//List ID
-//6f6ba8f8fd
